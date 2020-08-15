@@ -1,5 +1,5 @@
-Flask
 gunicorn
+Flask
 numpy
 opencv-python
 Werkzeug
