@@ -18,7 +18,7 @@ The dataset is from <a href="https://academictorrents.com/details/c501571c29d16d
 
 For this project to configure your device, tensorflow is needed to be installed:
 
-- <a href="https://www.tensorflow.org/install">Installing Tensorflow in Windows/Mac.
+- <a href="https://www.tensorflow.org/install">Installing Tensorflow in Windows/Mac</a>.
   
 ## Project Structure
 
