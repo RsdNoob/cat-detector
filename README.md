@@ -1,4 +1,4 @@
-# R-CNN Cat Detection using Keras and Tensorflow
+# Customized R-CNN model for Cat Detection using Keras and Tensorflow
 
 This project is for an assessment test.
 ![Process](/image/pic1.png)
@@ -105,4 +105,41 @@ This script will have the following breakdown:
 - visualize the prediction using OpenCV
 
 ## Results
+![First_test](/image/pic6.PNG)
+This image was the output of the customized R-CNN model. It detected the cat with 99.99% accuracy.
+![Second_test](/image/pic5.PNG)
+This was another output of the model. The problem with picture is the human toy in front of the cat. Since that part of the was blocked, the reduction of bounding boxes was affected. Another cause of this is the training dataset. As mentioned earlier, the annotations for the cats were manually created. Hence, it affected the prediction accuracy of the bounding boxes.
+![Third_test](/image/pic7.PNG)
+This is an image without a cat. After inputting to the model, the output is still the same. It is because the MobileNetV2 was customized such that it will only detect cats.
 
+## How to deploy this model on your computer
+
+1. Install the requirements on requirements.txt
+2. Either run the detect_rcnn_object.py or run through Flask
+  2.1 Running the detect_rcnn_object.py (Windows):
+    2.1.1 Open the conda command prompt
+    2.1.2 Go to the project directory
+    2.1.3 On the conda command prompt: python detect_object_rcnn.py --image [directory of your image]
+  2.2 Running through flask (Windows):
+    2.2.1 Open the conda command prompt
+    2.2.2 Go to the project directory
+    2.2.3 On the conda command prompt, run the following:
+      - set FLASK_APP=app.py
+      - flask run
+    2.2.4 Open the browser and put the local directory that can be seen on the conda command prompt (usually http://127.0.0.1:5000)
+    2.2.5 Now, you can input your image on the web application
+    
+*Note: I tried to deploy it on HerokuApp, however, there is a limit of 500Mb. Hence, I cannot show you a working website of this project*
+
+## Insights
+
+- Pre-trained model are the best!
+- Creating the the dataset is hard.
+
+## References
+
+- https://towardsdatascience.com/how-to-train-your-own-object-detector-with-tensorflows-object-detector-api-bec72ecfe1d9
+- https://www.pyimagesearch.com/2020/07/13/r-cnn-object-detection-with-keras-tensorflow-and-deep-learning/
+- https://academictorrents.com/details/c501571c29d16d7f41d159d699d0e7fb37092cbd
+- https://github.com/tzutalin/labelImg
+- https://www.tensorflow.org/install
