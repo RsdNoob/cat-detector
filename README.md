@@ -126,6 +126,8 @@ This is an image without a cat. After inputting to the model, the output is stil
 
 ## How to deploy this model on your computer
 
+The steps below are the guide to run this project on your local computer (Windows):
+
 1. Install the requirements on requirements.txt
 2. Either run the detect_rcnn_object.py or run through Flask
   2.1 Running the detect_rcnn_object.py (Windows):
