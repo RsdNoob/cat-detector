@@ -138,7 +138,7 @@ The steps below are the guide to run this project on your local computer (Window
     - Open the conda command prompt
     - Go to the project directory
     - On the conda command prompt: set FLASK_APP=app.py
-    - set FLASK_APP=app.py: flask run
+    - On the conda command prompt: flask run
     - Open the browser and put the local directory that can be seen on the conda command prompt (usually http://127.0.0.1:5000)
     - Now, you can input your image on the web application
     
