@@ -2,6 +2,12 @@
 
 This project is for an assessment test.
 
+The main problem is to build a machine learning program for object recognition, which can detect cats in a given image. The application should be able to detect multiple cats in one picture.
+
+A jpg (png) image file should be appropriate as an input to the application. The output should also be a jpg (png) file from the input image, with the same image size. The performance has to have small, green bounding boxes from the image on the detected cats.
+
+Hence, below is the process of solving this:
+
 ![Process](/image/pic1.png)
 
 ## Cat Detection Dataset
@@ -24,7 +30,7 @@ For this project to configure your device, tensorflow is needed to be installed:
 
 ![Structure](/image/pic3.PNG)
 
-cats/images is from the Cat Annotation Dateset while annotations/ is manually created. Thise dataset must not be confused with the one that will be created later by build dataset.py script — dataset/ — which is designed to fine-tune our MobileNet V2 model to generate a cat classifier (cat_detector.h5).
+The directory 'cats/images' is from the Cat Annotation Dateset while files in 'annotations/' are manually created. These dataset must not be confused with the one that will be created later by build dataset.py script — dataset/ — which is designed to fine-tune our MobileNet V2 model to generate a cat classifier (cat_detector.h5).
 
 pyimagesearch folder contains:
 
@@ -34,8 +40,8 @@ pyimagesearch folder contains:
 
 In the following three Python scripts, the scripts in the pyimagesearch module will come in handy:
 
-- build dataset.py: takes the cat dataset from Dat Trancats/images and /annotations, then generates a new cat / no_cat dataset, which will be used to fine-tune a pre-trained MobileNet V2 model on the ImageNet dataset
-- fine-tune rcnn.py: Trains our fine-tuning raccoon classifier
+- build dataset.py: takes the cat dataset from the directories 'cats/images' and '/annotations', then generates a new cat / no_cat dataset, which will be used to fine-tune a pre-trained MobileNet V2 model on the ImageNet dataset
+- fine-tune rcnn.py: Trains our fine-tuning cat classifier
 - detect_object_rcnn.py: bring all the pieces together to perform rudimentary detection of R-CNN objects
 
 ## Implementing Cat Detection Configuration File
@@ -44,7 +50,7 @@ Next step is implementing the configuration file that will store key constants a
 
 The pyimages/config.py contains the following:
 
-- paths for the original raccoon data set images and annotations for object detection
+- paths for the original cat data set images and annotations for object detection
 - paths to positive ( i.e., a cat) and negative ( i.e., no cat in the image input) images. When build dataset.py script is run, these directories will be filled in.
 - total number of proposals for Specific Search regions to be used for training and inference, respectively
 - total number of positive and negative regions to use when constructing our dataset
@@ -146,8 +152,12 @@ The steps below are the guide to run this project on your local computer (Window
 
 ## Insights
 
-- Pre-trained model are the best!
-- Creating the the dataset is hard.
+- OpenCV is useful for image processing. The deployment of this project is mostly done through OpenCV and Tensorflow.
+- Training of the bounding boxes was one of the challenges in this project. Without good dataset, it can affect the predictions in the deployment part.
+- **Pre-trained models are the best!** Using MobileNetV2, it was easy to create a model with good accuracy (~99%). This project could also be improved by using more cat pictures. For its other applications, other pictures can also be detected, as long as there is enough dataset for training the model.
+- There can be a lot more of improvements in this project like more complexities in the bounding boxes, e.g. scaled measurement of cat's height. However, it needs more complex OpenCV techniques and Mathematics computation.
+- For the models used, since there is MobileNetV2, CNN is really the only choice in order to fine tune the model. If there are around thousands of available data, then creating a model from scratch is possible, and multiple Machine and Deep Learnings can be tried.
+- There are a lot of available algorithms in scikit-learn or tensorflow. It would be nice to see comparisons of those different models in further projects.
 
 ## References
 
