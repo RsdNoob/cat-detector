@@ -1,6 +1,6 @@
-# R-CNN Cat Detection using Deep Learning
+# R-CNN Cat Detection using Keras and Tensorflow
 
-This project is an assessment exam.
+This project is for an assessment test.
 ![Process](/image/pic1.png)
 ## Cat Detection Dataset
 ![First_dataset](/image/pic2.png)
@@ -33,7 +33,7 @@ In the following three Python scripts, the scripts in the pyimagesearch module w
 - fine-tune rcnn.py: Trains our fine-tuning raccoon classifier
 - detect_object_rcnn.py: bring all the pieces together to perform rudimentary detection of R-CNN objects
 
-## Implementing Object Detection Configuration File
+## Implementing Cat Detection Configuration File
 
 Next step is implementing the configuration file that will store key constants and settings, which will be used across multiple Python scripts.
 
@@ -48,7 +48,7 @@ The pyimages/config.py contains the following:
   - paths of the output file to the cat classifier and mark encoder
   - minimum probability needed for a positive inference prediction (used to filter out false-positive detections) is set at 99%
   
-## Measuring object detection accuracy with Intersection over Union (IoU)
+## Measuring Cat Detection Accuracy with Intersection over Union (IoU)
 
 Intersection over Union (IoU) metric will be used to calculate how "strong" a job our object detector does when predicting bounding boxes.
 
@@ -64,5 +64,45 @@ Examining this equation, it is simply a ratio of intersection over union:
 
 IoU will be used to test the accuracy of object detection, including how often a given proposal for Selective Search overlaps with a bounding box for ground reality.
 
-## Implementing build_dataset.py Script for Object Detection
+## Implementing build_dataset.py Script for Cat Detection
+
+The steps below is an overview of the steps used to create build_dataset.py script:
 ![Second_dataset](/image/pic4.png)
+
+## Fine-tuning of Cat Detection using Keras and Tensorflow
+
+With the dataset generated through the previous part (Step # 1), fine-tuning can now be done on a CNN classification model.
+
+By combining this classifier with Selective Search, R-CNN cat detector can be constructed.
+
+*I have chosen to fine-tune the MobileNet V2 CNN since time is limited, which is pre-trained on the 1,000-class ImageNet dataset.*
+
+Opening the script for fine-tuning, the breakdown is below:
+
+- config: python configuration file consists of paths and constants
+- ImageDataGenerator: for data augmentation purposes
+- MobileNetV2: The MobileNet CNN architecture is standard, so TensorFlow / Keras is built-in. This pre-trained model will be used for fine tuning purposes, freeze the head of the network and remove it, then tune / train until the model performs well. Later the head will be returned during the cat detection part.
+- tensorflow.keras.layers: selected types of CNN layers are used to build / replace MobileNet V2 headers.
+- adam: an alternative optimiser to Stochastic Gradient Descent (SGD).
+- LabelBinarizer and to_categorical: used in conjunction to perform a one-hot encoding of our class labels.
+- train_test_split: conveniently helps segment the dataset into training and testing sets.
+- classification_report: computes a statistical summary of our model evaluation results.
+- matplotlib: python’s plotting package will be used to generate accuracy/loss curves from our training history data.
+
+After fine-tuning the model, cat detection is now available.
+
+## Putting the Pieces Together: Implementing the R-CNN Cat Detection Script
+
+This script will have the following breakdown:
+
+- command for accepting the image
+- line for loading the model and associated label binarizer
+- line for loading the image
+- performing Selective Search
+- extracting proposed bounding boxes and pre-process them
+- classify the pictures from each proposed bounding box
+- filter the prediction to positive (bounding boxes with cats) only
+- visualize the prediction using OpenCV
+
+## Results
+
