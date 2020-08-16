@@ -59,7 +59,7 @@ Intersection over Union (IoU) metric will be used to calculate how "strong" a jo
 
 The IoU method computes the ratio between the expected bounding box and the ground-truth bounding box between the area of overlap and the area of union:
 
-<img src="https://render.githubusercontent.com/render/math?math=IoU = \frac{Area of Overlap}{Area of Union}">
+<img src="https://render.githubusercontent.com/render/math?math=IoU = \dfrac{Area of Overlap}{Area of Union}">
 
 Examining this equation, it is simply a ratio of intersection over union:
 
