@@ -1,9 +1,13 @@
 # Customized R-CNN model for Cat Detection using Keras and Tensorflow
 
 This project is for an assessment test.
+
 ![Process](/image/pic1.png)
+
 ## Cat Detection Dataset
+
 ![First_dataset](/image/pic2.png)
+
 As shown above, the first step will be training of R-CNN object detector to detect cats in input images.
 
 This dataset contains 200 images (some images contain more than one cat). The annotation was manually created using LabelImg.
@@ -17,6 +21,7 @@ For this project to configure your device, tensorflow is needed to be installed:
 - <a href="https://www.tensorflow.org/install">Installing Tensorflow in Windows/Mac.
   
 ## Project Structure
+
 ![Structure](/image/pic3.PNG)
 
 cats/images is from the Cat Annotation Dateset while annotations/ is manually created. Thise dataset must not be confused with the one that will be created later by build dataset.py script — dataset/ — which is designed to fine-tune our MobileNet V2 model to generate a cat classifier (cat_detector.h5).
@@ -67,6 +72,7 @@ IoU will be used to test the accuracy of object detection, including how often a
 ## Implementing build_dataset.py Script for Cat Detection
 
 The steps below is an overview of the steps used to create build_dataset.py script:
+
 ![Second_dataset](/image/pic4.png)
 
 ## Fine-tuning of Cat Detection using Keras and Tensorflow
@@ -105,11 +111,17 @@ This script will have the following breakdown:
 - visualize the prediction using OpenCV
 
 ## Results
+
 ![First_test](/image/pic6.PNG)
+
 This image was the output of the customized R-CNN model. It detected the cat with 99.99% accuracy.
+
 ![Second_test](/image/pic5.PNG)
+
 This was another output of the model. The problem with picture is the human toy in front of the cat. Since that part of the was blocked, the reduction of bounding boxes was affected. Another cause of this is the training dataset. As mentioned earlier, the annotations for the cats were manually created. Hence, it affected the prediction accuracy of the bounding boxes.
+
 ![Third_test](/image/pic7.PNG)
+
 This is an image without a cat. After inputting to the model, the output is still the same. It is because the MobileNetV2 was customized such that it will only detect cats.
 
 ## How to deploy this model on your computer
